@@ -2,47 +2,260 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>قيد التطوير - w19r.org</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نقل الموقع | Website Relocated - Abdallah Alaydi</title>
+  
+  <!-- إعادة توجيه تلقائي بعد 10 ثوانٍ إلى الموقع الجديد -->
+  <meta http-equiv="refresh" content="10;url=https://www.abdallahalaydi.com">
+  
   <style>
-    body {
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0d0f12 0%, #151921 50%, #08090b 100%);
+      --card-bg: rgba(22, 27, 34, 0.75);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --accent-gold: #d4af37;
+      --accent-gold-hover: #f3e5ab;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      height: 100vh; /* ياخد طول الشاشة كامل */
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
       display: flex;
-      justify-content: center; /* بالنص افقي */
-      align-items: center; /* بالنص عمودي */
-      flex-direction: column;
-      font-family: Arial, sans-serif;
-      background: #1a1a1a;
-      color: white;
+      justify-content: center;
+      align-items: center;
+      font-family: var(--font-family);
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* خلفية متدرجة متحركة خفيفة لإعطاء عمق وفخامة */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 70%);
+      top: 10%;
+      right: 15%;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 45px 35px;
       text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                  0 0 30px rgba(212, 175, 55, 0.05);
     }
-    h1 {
-      font-size: 3.5em; /* خط كبير */
-      margin-bottom: 10px;
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 0.85em;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold);
+      border-radius: 50px;
+      margin-bottom: 25px;
+      background: rgba(212, 175, 55, 0.05);
+      text-transform: uppercase;
     }
-    p {
-      font-size: 1.5em; /* خط متوسط */
-      margin: 10px;
+
+    .brand-title {
+      font-size: 1.2em;
+      color: var(--accent-gold);
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      font-weight: 600;
     }
-    a {
-      color: #ff9800;
-      text-decoration: none;
+
+    /* قسم اللغة العربية */
+    .ar-section {
+      margin-bottom: 30px;
+    }
+
+    .ar-section h1 {
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .ar-section p {
+      font-size: 1.1em;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+      margin: 25px 0;
+    }
+
+    /* قسم اللغة الإنجليزية */
+    .en-section {
+      direction: ltr;
+      margin-bottom: 35px;
+    }
+
+    .en-section h2 {
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .en-section p {
+      font-size: 1em;
+      color: var(--text-muted);
+    }
+
+    /* الزر الرئيسي للموقع الجديد */
+    .btn-primary {
+      display: inline-block;
+      width: 100%;
+      padding: 16px 30px;
+      font-size: 1.15em;
       font-weight: bold;
-      font-size: 1.3em;
-      margin: 0 15px;
+      color: #0d0f12;
+      background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 100%);
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+      margin-bottom: 25px;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+      background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%);
+    }
+
+    /* شريط تقدم العد التنازلي */
+    .timer-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .timer-progress {
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gold);
+      animation: countdown 10s linear forwards;
+    }
+
+    @keyframes countdown {
+      from { width: 100%; }
+      to { width: 0%; }
+    }
+
+    /* روابط التواصل الاجتماعي */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95em;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* تجاوب مع الشاشات الصغيرة */
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+      .ar-section h1 {
+        font-size: 1.6em;
+      }
+      .en-section h2 {
+        font-size: 1.2em;
+      }
+      .social-links {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🚧 الموقع قيد التطوير</h1>
-  <p>بيرجعلكم قريباً على <b>w19r.org</b></p>
-  <div>
-    <a href="https://www.instagram.com/1w19r?igsh=MnJwZWpscHRtMGJx&utm_source=qr" target="_blank">Instagram</a> 
-    | 
-    <a href="https://tiktok.com/@w19r" target="_blank">TikTok</a>
+
+  <div class="container">
+    <div class="brand-title">ABDALLAH ALAYDI</div>
+    <div class="badge">إشعار نقل Domain Relocation</div>
+
+    <!-- المحتوى العربي -->
+    <div class="ar-section">
+      <h1>تم نقل الموقع إلى نطاق جديد</h1>
+      <p>نشكر زيارتك لـ <b>w19r.org</b>. لقد انتقلنا رسمياً إلى الدومين الشخصي الجديد لتقديم تجربة أكثر احترافية.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- المحتوى الإنجليزي -->
+    <div class="en-section">
+      <h2>Website Has Been Moved</h2>
+      <p>We have officially relocated from <b>w19r.org</b> to our new custom domain.</p>
+    </div>
+
+    <!-- زر الانتقال الفوري -->
+    <a href="https://www.abdallahalaydi.com" class="btn-primary">
+      الانتقال للموقع الجديد | Go to New Website
+    </a>
+
+    <!-- شريط تحويل تلقائي -->
+    <div class="timer-bar">
+      <div class="timer-progress"></div>
+    </div>
+
+    <!-- وسائل التواصل الاجتماعي -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/1w19r?igsh=MnJwZWpscHRtMGJx&utm_source=qr" target="_blank" class="social-link">Instagram</a>
+      <a href="https://tiktok.com/@w19r" target="_blank" class="social-link">TikTok</a>
+    </div>
   </div>
+
 </body>
 </html>
